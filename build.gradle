@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'org.vescm'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.4.2'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.2'
+
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+
+	testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+	testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+
+	runtimeOnly 'com.h2database:h2'
+
+	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.1.Final'
+	annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.4.1.Final'
+}
+
+test {
+	useJUnitPlatform()
+}
